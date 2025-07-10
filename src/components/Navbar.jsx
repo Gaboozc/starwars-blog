@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useFavorites } from "../Context/FavoriteContext";;
+import { useFavorites } from "../Context/FavoriteContext";
 import "../style/Navbar.css";
 
 const starWarsLogoUrl =
@@ -25,31 +25,47 @@ const Navbar = () => {
     <nav className="navbar navbar-light">
       <div className="container">
         <Link to="/">
-          <img src={starWarsLogoUrl} alt="Star Wars Logo" />
+          <img src={starWarsLogoUrl} alt="Star Wars Logo" className="logo-img" />
         </Link>
+        
+        {/* Navigation Links */}
+        <div className="nav-links">
+          <Link to="/characters" className="nav-link">Characters</Link>
+          <Link to="/planets" className="nav-link">Planets</Link>
+          <Link to="/species" className="nav-link">Species</Link>
+          <Link to="/starships" className="nav-link">Starships</Link>
+          <Link to="/vehicles" className="nav-link">Vehicles</Link> {/* New Vehicles Link */}
+        </div>
+
         <img
           src={decorativeImageUrl}
           alt="Decorative Image"
           className="decorative-image"
         />
+        
+        {/* Favorites Dropdown */}
         <div className="ml-auto">
           <button className="btn btn-primary" onClick={toggleDropdown}>
-            Favorites
+            Favorites ({favorites.length})
           </button>
           <div className={`dropdown-menu ${dropdownOpen ? "open" : ""}`}>
-            <ul>
-              {favorites.map((item, index) => (
-                <li key={index}>
-                  {item.name}
-                  <button
-                    className="remove-btn"
-                    onClick={() => removeFavorite(item)}
-                  >
-                    X
-                  </button>
-                </li>
-              ))}
-            </ul>
+            {favorites.length > 0 ? (
+              <ul>
+                {favorites.map((item, index) => (
+                  <li key={index}>
+                    <Link to={`/${item.type}/${item.id}`}>{item.name}</Link>
+                    <button
+                      className="remove-btn"
+                      onClick={() => removeFavorite(item)}
+                    >
+                      X
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="empty-favorites">No favorites yet</p>
+            )}
           </div>
         </div>
       </div>
@@ -57,4 +73,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

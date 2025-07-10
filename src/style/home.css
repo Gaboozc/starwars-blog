@@ -1,157 +1,192 @@
+/* 
+ * Home Page Styles
+ * Maintains Star Wars aesthetic with animated starfield background
+ * and responsive card grid layout
+ */
+
 /* === Base Styles === */
+/* Main container for the home page */
 .home {
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-  font-family: 'Pathway Gothic One', sans-serif;
-  color: white;
+  min-height: 100vh; /* Full viewport height */
+  position: relative; /* For absolute positioning of children */
+  overflow: hidden; /* Prevent scrolling */
+  font-family: 'Pathway Gothic One', sans-serif; /* Star Wars themed font */
+  color: white; /* Base text color */
 }
 
 /* === Starfield Animation === */
+/* Canvas element for the animated star background */
 .starfield-canvas {
-  position: fixed;
+  position: fixed; /* Fixed position so it stays during scroll */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -1; /* Behind all other content */
+  /* Deep space gradient background */
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
 }
 
 /* === Content Wrapper === */
+/* Container for all page content above the starfield */
 .content-wrapper {
-  position: relative;
-  z-index: 1;
-  padding: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
+  position: relative; /* For z-index stacking */
+  z-index: 1; /* Above the starfield */
+  padding: 2rem; /* Spacing around content */
+  max-width: 1400px; /* Max content width */
+  margin: 0 auto; /* Center the content */
 }
 
 /* === Header Styles === */
+/* Container for the main title and subtitle */
 .home-header {
-  margin-bottom: 3rem;
-  animation: fadeIn 1.5s ease-out;
-  text-align: center;
+  margin-bottom: 3rem; /* Space below header */
+  animation: fadeIn 1.5s ease-out; /* Fade-in animation */
+  text-align: center; /* Center align text */
 }
 
+/* Main Star Wars title */
 .star-wars-title {
-  font-size: 4.5rem;
-  color: #FFE81F;
-  text-transform: uppercase;
-  letter-spacing: 6px;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 20px rgba(255, 232, 31, 0.8);
+  font-size: 4.5rem; /* Large text size */
+  color: #FFE81F; /* Classic Star Wars yellow */
+  text-transform: uppercase; /* ALL CAPS */
+  letter-spacing: 6px; /* Spaced out letters */
+  margin-bottom: 0.5rem; /* Space below title */
+  text-shadow: 0 0 20px rgba(255, 232, 31, 0.8); /* Glowing effect */
 }
 
+/* Subtitle text */
 .subtitle {
   font-size: 1.8rem;
-  color: #aaa;
+  color: #aaa; /* Light gray */
   letter-spacing: 3px;
-  font-weight: 300;
+  font-weight: 300; /* Light font weight */
 }
 
+/* Fade-in animation for header */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); /* Start slightly below */
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); /* Move to normal position */
+  }
 }
 
 /* === Sections Grid === */
+/* Grid container for category cards */
 .sections-grid {
   display: grid;
+  /* Responsive grid with minimum 350px columns */
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
+  gap: 2rem; /* Space between cards */
+  padding: 1rem; /* Inner spacing */
 }
 
 /* === Card Styles === */
+/* Individual category card */
 .section-card {
   position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Contain child elements */
+  transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
+/* Card hover effect */
 .section-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px); /* Lift up slightly */
 }
 
 /* Glow Frame Effect */
+/* Container for the glowing border effect */
 .glow-frame {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
 }
 
+/* Pseudo-element for the glow effect */
 .glow-frame::before {
   content: '';
   position: absolute;
-  inset: -3px;
+  inset: -3px; /* Extend beyond container */
   border-radius: 10px;
+  /* Gradient using the --accent-color variable */
   background: linear-gradient(45deg, var(--accent-color), #FFE81F);
-  z-index: -1;
-  opacity: 0.7;
-  animation: glow-pulse 2s infinite alternate;
+  z-index: -1; /* Behind the image */
+  opacity: 0.7; /* Semi-transparent */
+  animation: glow-pulse 2s infinite alternate; /* Pulsing animation */
 }
 
+/* Section image/GIF */
 .section-gif {
-  width: 100%;
-  height: auto;
+  width: 100%; /* Full width of container */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 8px;
   display: block;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
 /* Section Info */
+/* Container for text content within cards */
 .section-info {
   padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  backdrop-filter: blur(5px); /* Frosted glass effect */
 }
 
+/* Section title within card */
 .section-info h3 {
-  color: var(--accent-color);
+  color: var(--accent-color); /* Dynamic color from props */
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
+/* Section description text */
 .section-info p {
-  color: #ddd;
+  color: #ddd; /* Light gray */
   margin-bottom: 1.5rem;
-  line-height: 1.5;
+  line-height: 1.5; /* Improved readability */
 }
 
-/* Button Styles */
+/* === Button Styles === */
+/* Explore button styling */
 .explore-btn {
   display: inline-block;
   padding: 0.8rem 1.8rem;
-  color: #000;
+  color: #000; /* Black text */
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease; /* Smooth hover transition */
   text-decoration: none;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
 
+/* Button hover state */
 .explore-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
-  filter: brightness(1.1);
+  transform: translateY(-3px); /* Lift up */
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2); /* Enhanced glow */
+  filter: brightness(1.1); /* Slightly brighter */
 }
 
-/* Animations */
+/* === Animations === */
+/* Pulsing glow animation */
 @keyframes glow-pulse {
   0% { opacity: 0.7; }
   100% { opacity: 1; }
 }
 
-/* Responsive Adjustments */
+/* === Responsive Adjustments === */
 @media (max-width: 768px) {
+  /* Smaller text on mobile */
   .star-wars-title {
     font-size: 3rem;
   }
@@ -160,6 +195,7 @@
     font-size: 1.2rem;
   }
   
+  /* Single column layout on mobile */
   .sections-grid {
     grid-template-columns: 1fr;
   }
