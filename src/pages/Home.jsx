@@ -1,51 +1,128 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../style/home.css'; // Import the CSS file
+import '../style/home.css';
 
 const Home = () => {
+  const sections = [
+    {
+      title: "PLANETS",
+      description: "Travel across the galaxy to the many planets.",
+      path: "/planets",
+      image: "https://i.pinimg.com/originals/e8/72/41/e87241e1668e8476722a216979dbdacc.gif",
+      alt: "Animated Star Wars planets",
+      accentColor: "#4A90E2"
+    },
+    {
+      title: "STARSHIPS",
+      description: "Discover the iconic starships of Star Wars.",
+      path: "/starships",
+      image: "https://media1.giphy.com/media/Qvqel9RwUS2ethQe2c/giphy.gif",
+      alt: "Animated starships flying",
+      accentColor: "#FF9800"
+    },
+    {
+      title: "CHARACTERS",
+      description: "Meet heroes, villains, and everything in between.",
+      path: "/characters",
+      image: "https://i.pinimg.com/originals/08/29/e8/0829e84cc1e842767bfd62357db9b108.gif",
+      alt: "Star Wars characters",
+      accentColor: "#E91E63"
+    },
+    {
+      title: "SPECIES",
+      description: "Explore the galaxy's diverse species.",
+      path: "/species",
+      image: "https://pa1.aminoapps.com/7263/79e7087f1d35b6a1f62298c088d70287b909b8cer1-256-256_00.gif",
+      alt: "Star Wars species",
+      accentColor: "#8BC34A"
+    }
+  ];
+
+  useEffect(() => {
+    const canvas = document.getElementById('starfield');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    
+    resizeCanvas();
+
+    const stars = Array.from({ length: 200 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.5,
+      speed: Math.random() * 0.5 + 0.1
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+
+      stars.forEach(star => {
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', resizeCanvas);
+    return () => window.removeEventListener('resize', resizeCanvas);
+  }, []);
+
   return (
     <div className="home">
-      <h1>STAR WARS</h1>
-      <h2>A New Perspective on the Galaxy Far, Far Away</h2>
-      <div className="section">
-        <img src="https://i.pinimg.com/originals/e8/72/41/e87241e1668e8476722a216979dbdacc.gif" alt="Planets" className="section-image" />
-        <div className="section-content">
-          <h2>PLANETS</h2>
-          <p>Travel across the galaxy to the many planets.</p>
-          <Link to="/planets">
-            <button className="btn btn-primary">Planets</button>
-          </Link>
-        </div>
-      </div>
-      <div className="section">
-        <img src="https://media1.giphy.com/media/Qvqel9RwUS2ethQe2c/giphy.gif?cid=6c09b952gfvbb7ur519rbj6561zgfwb85ia289kwg47dhn12&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="Starships" className="section-image" />
-        <div className="section-content">
-          <h2>STARSHIPS</h2>
-          <p>Discover the iconic starships of Star Wars.</p>
-          <Link to="/starships">
-            <button className="btn btn-primary">Starships</button>
-          </Link>
-        </div>
-      </div>
-      <div className="section">
-        <img src="https://i.pinimg.com/originals/08/29/e8/0829e84cc1e842767bfd62357db9b108.gif" alt="Characters" className="section-image" />
-        <div className="section-content">
-          <h2>CHARACTERS</h2>
-          <p>Discover the diverse characters of the galaxy, from brave heroes to nefarious villains.</p>
-          <Link to="/characters">
-            <button className="btn btn-primary">Characters</button>
-          </Link>
-        </div>
-      </div>
-      <div className="section">
-        <img src="https://pa1.aminoapps.com/7263/79e7087f1d35b6a1f62298c088d70287b909b8cer1-256-256_00.gif" alt="Species" className="section-image" />
-        <div className="section-content">
-          <h2>SPECIES</h2>
-          <p>Learn about the various species that inhabit the galaxy.</p>
-          <Link to="/species">
-            <button className="btn btn-primary">Species</button>
-          </Link>
-        </div>
+      <canvas id="starfield" className="starfield-canvas" />
+      
+      <div className="content-wrapper">
+        <header className="home-header">
+          <h1 className="star-wars-title">STAR WARS</h1>
+          <h2 className="subtitle">A New Perspective on the Galaxy Far, Far Away</h2>
+        </header>
+
+        <main className="sections-grid">
+          {sections.map((section, index) => (
+            <div 
+              key={index} 
+              className="section-card"
+              style={{ '--accent-color': section.accentColor }}
+            >
+              <div className="glow-frame">
+                <img
+                  src={section.image}
+                  alt={section.alt}
+                  className="section-gif"
+                  loading="lazy"
+                  width={400}
+                  height={300}
+                />
+              </div>
+              <div className="section-info">
+                <h3>{section.title}</h3>
+                <p>{section.description}</p>
+                <Link 
+                  to={section.path} 
+                  className="explore-btn"
+                  style={{ backgroundColor: section.accentColor }}
+                >
+                  Explore {section.title}
+                </Link>
+              </div>
+            </div>
+          ))}
+        </main>
       </div>
     </div>
   );

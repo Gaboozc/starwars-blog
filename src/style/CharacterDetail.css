@@ -1,65 +1,74 @@
+/* Main container for character detail page */
 .character-detail {
     text-align: center;
     padding: 50px;
-    background-color: #000000; 
-  }
-  
-  .character-detail h1 {
+    background-color: #000000; /* Black background for space theme */
+}
+
+/* Character name heading */
+.character-detail h1 {
     font-size: 2.5em;
-    color: #ff9800; 
+    color: #ff9800; /* Star Wars orange/yellow */
     margin-bottom: 20px;
-  }
-  
-  .character-detail p {
+}
+
+/* Descriptive text paragraphs */
+.character-detail p {
     font-size: 1.2em;
-    color: #fff; 
+    color: #fff; /* White text for contrast */
     margin-bottom: 30px;
-  }
-  
-  .character-detail ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .character-detail li {
-    margin: 20px 0; 
+}
+
+/* List container for character details */
+.character-detail ul {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0; /* Remove default padding */
+}
+
+/* Individual detail items */
+.character-detail li {
+    margin: 20px 0; /* Vertical spacing */
     padding: 10px;
-    background-color: #1a1a2e;
+    background-color: #1a1a2e; /* Dark blue background */
     color: white;
-    border-radius: 10px; 
-    display: flex;
+    border-radius: 10px; /* Rounded corners */
+    display: flex; /* Flex layout for alignment */
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .character-image {
-    width: 200px; 
-    height: auto; 
-    margin-right: 20px; 
-    border-radius: 10px; 
-  }
-  
-  .character-info {
-    flex-grow: 1; 
-    text-align: center; 
-  }
-  
-  .character-info h3, .character-info p {
-    color: #ffffff; 
-    margin: 10px 0; 
-  }
-  
-  .character-detail li button {
+}
+
+/* Character image styling */
+.character-image {
+    width: 200px; /* Fixed width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Spacing from text */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Container for character information */
+.character-info {
+    flex-grow: 1; /* Take remaining space */
+    text-align: center; /* Center align content */
+}
+
+/* Text elements within info container */
+.character-info h3, .character-info p {
+    color: #ffffff; /* White text */
+    margin: 10px 0; /* Vertical spacing */
+}
+
+/* Favorite button styling */
+.character-detail li button {
     padding: 10px 20px;
-    background-color: #ff9800; 
+    background-color: #ff9800; /* Matching orange */
     color: white;
     border: none;
     cursor: pointer;
     font-size: 1em;
-    border-radius: 5px;
-  }
-  
-  .character-detail li button:hover {
-    background-color: #e68900; 
-  }
-  
+    border-radius: 5px; /* Slightly rounded */
+}
+
+/* Favorite button hover effect */
+.character-detail li button:hover {
+    background-color: #e68900; /* Darker orange */
+}

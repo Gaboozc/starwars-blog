@@ -1,45 +1,51 @@
-/* src/style/Navbar.css */
-
+/* Navbar container - fixed at the top of the page */
 .navbar {
-  background-color: #000000; 
-  color: white;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative; 
+  background-color: #000000; /* Solid black background */
+  color: white; /* Text color */
+  padding: 10px; /* Internal spacing */
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space out child elements */
+  align-items: center; /* Vertical centering */
+  position: relative; /* Positioning context for absolute children */
 }
 
+/* Container for navbar contents - handles layout */
 .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space out logo and other elements */
+  align-items: center; /* Vertical centering */
+  width: 100%; /* Full width of navbar */
 }
 
+/* Logo image styling */
 .navbar img {
-  width: 300px; 
+  width: 300px; /* Fixed width for logo */
+  /* Height is auto to maintain aspect ratio */
 }
 
+/* Decorative image centered in navbar */
 .decorative-image {
-  position: absolute; 
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px; 
+  position: absolute; /* Absolute positioning */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Precise centering */
+  width: 150px; /* Fixed width */
+  /* Height is auto to maintain aspect ratio */
 }
 
+/* Dropdown menu - hidden by default */
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  right: 10px;
-  top: 50px;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 1;
+  display: none; /* Initially hidden */
+  position: absolute; /* Positioned relative to navbar */
+  right: 10px; /* Position from right edge */
+  top: 50px; /* Position below navbar */
+  background-color: #333; /* Dark background */
+  color: white; /* Text color */
+  padding: 10px; /* Internal spacing */
+  border-radius: 5px; /* Rounded corners */
+  z-index: 1; /* Ensure it appears above other content */
 }
 
+/* Dropdown menu when open */
 .dropdown-menu.open {
-  display: block;
+  display: block; /* Show when open */
 }

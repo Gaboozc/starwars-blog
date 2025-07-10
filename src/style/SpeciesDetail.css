@@ -1,51 +1,58 @@
+/* Main container for species detail */
 .species-detail {
     text-align: center;
     padding: 50px;
-    background-color: #000000;
-  }
+    background-color: #000000; /* Space black */
+}
   
-  .species-detail h1 {
+/* Species name heading */
+.species-detail h1 {
     font-size: 2.5em;
-    color: #ff9800; 
+    color: #ff9800; /* Theme color */
     margin-bottom: 20px;
-  }
-  
-  .species-detail p {
+}
+
+/* Descriptive text */
+.species-detail p {
     font-size: 1.2em;
-    color: #fff; 
+    color: #fff; /* White text */
     margin-bottom: 30px;
-  }
-  
-  .species-detail ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .species-detail li {
-    margin: 20px 0; 
+}
+
+/* List container */
+.species-detail ul {
+    list-style-type: none; /* No bullets */
+    padding: 0; /* Remove padding */
+}
+
+/* Individual detail items */
+.species-detail li {
+    margin: 20px 0; /* Vertical spacing */
     padding: 10px;
-    background-color: #1a1a2e;
+    background-color: #1a1a2e; /* Dark background */
     color: white;
-    border-radius: 10px; 
-    display: flex;
+    border-radius: 10px; /* Rounded corners */
+    display: flex; /* Flex layout */
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .species-image {
-    width: 200px; 
-    height: auto; 
-    margin-right: 20px; 
-    border-radius: 10px; 
-  }
-  
-  .species-info {
-    flex-grow: 1; 
-    text-align: center; 
-  }
-  
-  .species-info h3, .species-info p {
-    color: #ffffff; 
-    margin: 10px 0; 
-  }
-  
+}
+
+/* Species image */
+.species-image {
+    width: 200px; /* Fixed width */
+    height: auto; /* Maintain ratio */
+    margin-right: 20px; /* Spacing from text */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Species info container */
+.species-info {
+    flex-grow: 1; /* Take remaining space */
+    text-align: center; /* Center content */
+}
+
+/* Text elements in info */
+.species-info h3, .species-info p {
+    color: #ffffff; /* White text */
+    margin: 10px 0; /* Vertical spacing */
+}
