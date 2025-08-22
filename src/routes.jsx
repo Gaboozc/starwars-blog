@@ -21,7 +21,7 @@ export const router = createBrowserRouter(
     <Route
       path="/"
       element={<Layout />}
-      errorElement={<h1>Have you heard the tragedy of Darth Plagueis?</h1>}
+      errorElement={<h1>Have you heard the tragedy of Darth Plagueis the wise?</h1>}
     >
       <Route index element={<Home />} />
       <Route path="characters" element={<CharacterList />} />

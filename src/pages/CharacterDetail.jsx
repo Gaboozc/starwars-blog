@@ -15,7 +15,7 @@ const CharacterDetail = () => {
     const fetchCharacter = async () => {
       try {
         // Fetch character details from API
-        const response = await fetch(`https://www.swapi.tech/api/people/${id}/`);
+        const response = await fetch(`https://www.swapi.tech/api/people/${id}/`); 
         // Parse the JSON response
         const data = await response.json();
         // Update state with the fetched character data
@@ -37,7 +37,8 @@ const CharacterDetail = () => {
 
   // Helper function to generate a summary sentence
   const generateSummary = () => {
-    return `Meet ${character.properties.name}, a ${character.properties.gender} character with ${character.properties.hair_color} hair and ${character.properties.eye_color} eyes.`;
+    return `Meet ${character.properties.name}, a ${character.properties.gender} 
+    character with ${character.properties.hair_color} hair and ${character.properties.eye_color} eyes.`;
   };
 
   // Render the character details

@@ -16,7 +16,7 @@ const CharacterList = () => {
     const fetchData = async () => {
       try {
         // Fetch characters from the API
-        const response = await fetch('https://www.swapi.tech/api/people/');
+        const response = await fetch('https://www.swapi.tech/api/people/'); 
         // Parse the JSON response
         const data = await response.json();
         // Update state with the fetched characters
