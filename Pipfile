@@ -4,8 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+flask = "*"
+flask-cors = "*"
+python-dotenv = "*"
 
 [dev-packages]
+flask-cli = "*"
 
 [requires]
 python_version = "3.10"
+
+[scripts]
+start = "flask run --host=0.0.0.0 --port=3001"
+dev = "flask run --host=0.0.0.0 --port=3001 --reload"
