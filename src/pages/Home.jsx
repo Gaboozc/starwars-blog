@@ -124,17 +124,36 @@ const Home = () => {
   
   /**
    * Handle opening the detail modal when user clicks "Learn More" button
+   * Fetches the complete item details from SWAPI before opening the modal
    * 
    * @param {Object} item - The item object selected by the user
    * @param {string} type - The type of item (characters, planets, species, starships, vehicles)
    */
-  const handleLearnMore = (item, type) => {
-    // Store the selected item in state
-    setSelectedItem(item);
-    // Store the type of the selected item
-    setSelectedType(type);
-    // Set modal visibility to true - this causes the modal to render
-    setIsModalOpen(true);
+  const handleLearnMore = async (item, type) => {
+    try {
+      // Show a loading state (you could add a loading indicator here)
+      setIsModalOpen(true);
+      setSelectedType(type);
+      setSelectedItem({ ...item, properties: { loading: true } });
+
+      // Fetch the complete details for the item using the item's URL
+      const response = await fetch(item.url);
+      const data = await response.json();
+      
+      // The API returns data in a 'result' property with 'properties' inside
+      const fullItem = {
+        ...item,
+        ...data.result,
+        properties: data.result.properties
+      };
+      
+      // Update state with the complete item data
+      setSelectedItem(fullItem);
+    } catch (error) {
+      console.error('Error fetching item details:', error);
+      // Set item anyway so modal can show with available data
+      setSelectedItem(item);
+    }
   };
 
   /**
@@ -297,8 +316,8 @@ const Home = () => {
             <div className="items-scroll-container">
               {/* Grid that scrolls horizontally */}
               <div className="items-grid">
-                {/* Map through first 8 characters and create a card for each */}
-                {characters.slice(0, 8).map((character) => (
+                {/* Map through first 10 characters and create a card for each */}
+                {characters.slice(0, 10).map((character) => (
                   // ItemCard component displays individual character in a card
                   <ItemCard
                     key={character.uid} // Unique identifier for React list rendering
@@ -321,8 +340,8 @@ const Home = () => {
             <div className="items-scroll-container">
               {/* Grid that scrolls horizontally */}
               <div className="items-grid">
-                {/* Map through first 8 planets and create a card for each */}
-                {planets.slice(0, 8).map((planet) => (
+                {/* Map through first 10 planets and create a card for each */}
+                {planets.slice(0, 10).map((planet) => (
                   // ItemCard component displays individual planet in a card
                   <ItemCard
                     key={planet.uid} // Unique identifier for React list rendering
@@ -345,8 +364,8 @@ const Home = () => {
             <div className="items-scroll-container">
               {/* Grid that scrolls horizontally */}
               <div className="items-grid">
-                {/* Map through first 8 species and create a card for each */}
-                {species.slice(0, 8).map((specie) => (
+                {/* Map through first 10 species and create a card for each */}
+                {species.slice(0, 10).map((specie) => (
                   // ItemCard component displays individual specie in a card
                   <ItemCard
                     key={specie.uid} // Unique identifier for React list rendering
@@ -369,8 +388,8 @@ const Home = () => {
             <div className="items-scroll-container">
               {/* Grid that scrolls horizontally */}
               <div className="items-grid">
-                {/* Map through first 8 starships and create a card for each */}
-                {starships.slice(0, 8).map((starship) => (
+                {/* Map through first 10 starships and create a card for each */}
+                {starships.slice(0, 10).map((starship) => (
                   // ItemCard component displays individual starship in a card
                   <ItemCard
                     key={starship.uid} // Unique identifier for React list rendering
@@ -393,8 +412,8 @@ const Home = () => {
             <div className="items-scroll-container">
               {/* Grid that scrolls horizontally */}
               <div className="items-grid">
-                {/* Map through first 8 vehicles and create a card for each */}
-                {vehicles.slice(0, 8).map((vehicle) => (
+                {/* Map through first 10 vehicles and create a card for each */}
+                {vehicles.slice(0, 10).map((vehicle) => (
                   // ItemCard component displays individual vehicle in a card
                   <ItemCard
                     key={vehicle.uid} // Unique identifier for React list rendering

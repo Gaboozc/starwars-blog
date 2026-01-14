@@ -32,20 +32,156 @@
   /* Height is auto to maintain aspect ratio */
 }
 
+/* Right section container for favorites */
+.ml-auto {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Button styling - general button styles */
+.btn {
+  padding: 12px 24px; /* Internal spacing */
+  border: none; /* Remove default border */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer */
+  font-size: 0.95rem; /* Text size */
+  font-weight: 900; /* Extra bold text */
+  transition: all 0.3s ease; /* Smooth transitions */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1.5px; /* Spacing between letters */
+}
+
+/* Primary button styling */
+.btn-primary {
+  background: linear-gradient(135deg, #FFE81F 0%, #FFC700 100%); /* Yellow gradient */
+  color: #000000; /* Black text */
+  border: 2px solid #FFE81F; /* Yellow border */
+  box-shadow: 0 4px 15px rgba(255, 232, 31, 0.3); /* Yellow glow */
+}
+
+/* Primary button hover effect */
+.btn-primary:hover {
+  background: linear-gradient(135deg, #FFC700 0%, #FFE81F 100%); /* Reverse gradient */
+  transform: translateY(-3px); /* Lift up */
+  box-shadow: 0 8px 25px rgba(255, 232, 31, 0.5); /* Enhanced glow */
+}
+
+/* Primary button active/clicked state */
+.btn-primary:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(255, 232, 31, 0.3);
+}
+
 /* Dropdown menu - hidden by default */
 .dropdown-menu {
   display: none; /* Initially hidden */
   position: absolute; /* Positioned relative to navbar */
-  right: 10px; /* Position from right edge */
+  right: 0; /* Position from right edge */
   top: 50px; /* Position below navbar */
-  background-color: #333; /* Dark background */
+  background: rgba(30, 30, 30, 0.95); /* Dark semi-transparent background */
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
   color: white; /* Text color */
-  padding: 10px; /* Internal spacing */
-  border-radius: 5px; /* Rounded corners */
-  z-index: 1; /* Ensure it appears above other content */
+  padding: 15px; /* Internal spacing */
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid rgba(255, 232, 31, 0.3); /* Subtle yellow border */
+  z-index: 1000; /* Ensure it appears above other content */
+  min-width: 250px; /* Minimum width for better readability */
+  max-height: 400px; /* Maximum height with scrolling */
+  overflow-y: auto; /* Scrollable if too many favorites */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  animation: slideDown 0.3s ease-out;
 }
 
 /* Dropdown menu when open */
 .dropdown-menu.open {
   display: block; /* Show when open */
+}
+
+/* Animation for dropdown appearance */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown list styling */
+.dropdown-menu ul {
+  list-style: none; /* Remove bullet points */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/* Dropdown list items */
+.dropdown-menu li {
+  padding: 10px 0; /* Spacing around items */
+  border-bottom: 1px solid rgba(255, 232, 31, 0.1); /* Subtle separator */
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Space between name and button */
+  align-items: center; /* Vertical centering */
+  gap: 10px; /* Gap between items */
+}
+
+/* Last item - no border */
+.dropdown-menu li:last-child {
+  border-bottom: none; /* Remove bottom border from last item */
+}
+
+/* Links in dropdown */
+.dropdown-menu a {
+  color: #FFE81F; /* Yellow text */
+  text-decoration: none; /* Remove underline */
+  flex-grow: 1; /* Take available space */
+  transition: color 0.2s ease; /* Smooth color change */
+  font-weight: 500; /* Semi-bold text */
+}
+
+/* Links hover effect */
+.dropdown-menu a:hover {
+  color: #FFC700; /* Brighter yellow on hover */
+}
+
+/* Remove button styling */
+.remove-btn {
+  background-color: #FF4444; /* Red background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 50%; /* Circular button */
+  width: 28px; /* Fixed width */
+  height: 28px; /* Fixed height */
+  padding: 0; /* No padding */
+  cursor: pointer; /* Pointer cursor */
+  display: flex; /* Flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  font-weight: bold; /* Bold text */
+  transition: all 0.2s ease; /* Smooth transitions */
+  flex-shrink: 0; /* Don't shrink */
+  box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+}
+
+/* Remove button hover */
+.remove-btn:hover {
+  background-color: #FF0000; /* Brighter red */
+  transform: scale(1.15); /* Slightly larger */
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.5);
+}
+
+/* Remove button active */
+.remove-btn:active {
+  transform: scale(0.95); /* Slightly smaller when clicked */
+}
+
+/* Empty favorites message */
+.empty-favorites {
+  color: #999; /* Gray text */
+  text-align: center; /* Center text */
+  padding: 20px 10px; /* Internal spacing */
+  font-style: italic; /* Italic for emphasis */
+  margin: 0; /* No margin */
 }

@@ -40,6 +40,11 @@ const DetailModal = ({ isOpen, onClose, item, type }) => {
     // Get the properties object - some items store data in .properties, others don't
     const properties = item.properties || item;
     
+    // Check if still loading
+    if (properties.loading) {
+      return [{ label: 'Loading', value: 'Please wait...' }];
+    }
+    
     // Use switch statement to determine which fields to display based on type
     switch(type) {
       // Character details section

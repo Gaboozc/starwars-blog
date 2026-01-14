@@ -30,7 +30,7 @@ import '../style/ItemCard.css';
 const ItemCard = ({ item, type, onLearnMore }) => {
   // Get the addFavorite function from the FavoritesContext
   // This function allows us to add items to the user's favorites list
-  const { addFavorites } = useFavorites();
+  const { addFavorite } = useFavorites();
 
   /**
    * Generate the correct image URL based on the item type

@@ -1,6 +1,6 @@
 # 🚀 QUICK START GUIDE
 
-## Opción 1: Ejecutar TODO en una sola terminal
+Run Everything in Separate Terminals
 
 ```bash
 # Terminal 1 - Frontend
@@ -12,97 +12,80 @@ pipenv run start
 
 ---
 
-## Opción 2: Ejecutar TODO de una vez (Requiere proceso manager)
+
+## 🌐 URLs
+
+- **Frontend**: http://localhost:3000
+- **Backend**: http://localhost:3001
+- **API Health Check**: http://localhost:3001/
+
+---
+
+## ✨ What We Have Now
+
+### ✅ Active Components
+- **Home.jsx** - Main page with all content
+- **ItemCard.jsx** - Item display cards
+- **DetailModal.jsx** - Detail information modal
+- **Navbar.jsx** - Navigation bar
+- **ScrollToTop.jsx** - Scroll functionality
+- **Layout.jsx** - Page wrapper component
+
+### ❌ Deleted Files (comparison with NEXT branch)
+- ❌ CharacterList.jsx, CharacterDetail.jsx
+- ❌ PlanetList.jsx, PlanetDetail.jsx
+- ❌ SpeciesList.jsx, SpeciesDetail.jsx
+- ❌ StarshipList.jsx, StarshipDetail.jsx
+- ❌ VehiclesList.jsx, VehicleDetail.jsx
+- ❌ All associated CSS files (10 files)
+- ❌ app.jsx, index.js (unused)
+- ❌ store.js, hooks/useGlobalReducer.jsx (unused)
+- ❌ Demo.jsx, DetailView.jsx (previously removed)
+
+---
+
+## 🔍 Quick Verification
 
 ```bash
-# Si tienes tmux o screen
-tmux new-session -d -s starwars "npm run start"
-tmux new-window -t starwars "pipenv run start"
-```
-
----
-
-## URLs
-
-- **Frontend**: http://localhost:3001
-- **Backend**: http://localhost:5000
-- **API Health Check**: http://localhost:5000/
-
----
-
-## ✨ Lo Que Cambiamos
-
-### 1. **Backend Flask** ✅
-- Nuevo archivo `app.py` con API REST
-- Configurado `Pipfile` para `pipenv run start`
-- Endpoints de favoritos implementados
-
-### 2. **Scroll Horizontal** ✅
-- Cada sección de items ahora scrollea horizontalmente
-- Scrollbar oculta pero funcional
-- Responsive en móvil
-
-### 3. **Componentes Mejorados** ✅
-- `Home.jsx` - 150+ líneas de comentarios en inglés
-- `ItemCard.jsx` - 100+ líneas de comentarios en inglés  
-- `DetailModal.jsx` - 200+ líneas de comentarios en inglés
-
-### 4. **Componentes Eliminados** ✅
-- ❌ Demo.jsx
-- ❌ DetailView.jsx
-
----
-
-## 🔍 Verificación Rápida
-
-```bash
-# Verificar que el build funciona
+# Verify that the build works
 npm run build
 
-# Verificar que el backend responde
-curl http://localhost:5000/
+# Verify that the backend responds
+curl http://localhost:3001/
 
-# Verificar que las dependencias están instaladas
+# Verify that dependencies are installed
 pipenv --version && npm --version
 ```
 
 ---
 
-## 📚 Documentación Completa
+## 📚 Complete Documentation
 
-Ver archivo: `CAMBIOS_REALIZADOS.md`
+See file: `DOCUMENTATION.md`
 
-Este documento tiene:
-- Descripción detallada de todos los cambios
-- Ejemplos de código
-- Estructura del proyecto
-- Guía de troubleshooting
-- Tecnologías utilizadas
-
----
-
-## 💡 Pro Tips
-
-1. **Modo desarrollo Flask con auto-reload**:
-   ```bash
-   pipenv run dev
-   ```
-
-2. **Instalar dependencias nuevas de Python**:
-   ```bash
-   pipenv install nombre-del-paquete
-   ```
-
-3. **Crear entorno virtual Python**:
-   ```bash
-   pipenv shell
-   ```
-
-4. **Ver logs de Flask en tiempo real**:
-   ```bash
-   pipenv run start 2>&1 | tail -f
-   ```
+This document includes:
+- Detailed component explanations
+- Complete code walkthroughs
+- Data flow diagrams
+- Learning guide for students
+- Architecture overview
+- How everything works together
 
 ---
 
-**¡Todo listo para usar! 🎉**
+## 📋 Feature Checklist
+
+- ✅ All 5 categories display with horizontal scrolling
+- ✅ 10 cards per section
+- ✅ Drag-to-scroll functionality
+- ✅ Click "Learn More" to see details in modal
+- ✅ Add/remove from favorites
+- ✅ Favorites dropdown in navbar
+- ✅ Starfield animated background
+- ✅ Responsive design
+- ✅ All code commented line-by-line
+- ✅ Comprehensive documentation
+
+---
+
+**Ready to use! 🎉**
